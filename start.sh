@@ -2,6 +2,11 @@
 set -e
 
 nginx -c "$PWD/nginx.conf" &
-flask run --port 8081 &
+
+cd /src/backend
+npm start &
+
+cd /src/frontend
+./node_modules/.bin/next -p 8081 &
 
 wait -n
